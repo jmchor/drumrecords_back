@@ -12,6 +12,26 @@ router.get("/records", async (req, res, next) => {
 
 })
 
+// POST route to create a record
+
+router.post("/records", async (req, res, next) => {
+    const { url, artist, category } = req.body;
+    try {
+        const newRecord = await Record.create({
+            url,
+            artist,
+            category
+        })
+
+        const updateCollection = await Collection.findOneAndUpdate({ name: category }, { $push: { records: newRecord._id } }, { new: true })
+
+        res.status(200).json(newRecord)
+    } catch (error) {
+        next(error)
+    }
+})
+
+
 
 
 module.exports = router;
