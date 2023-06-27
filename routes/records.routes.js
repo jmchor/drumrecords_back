@@ -12,6 +12,26 @@ router.get("/records", async (req, res, next) => {
 
 })
 
+router.get("/all-records", async (req, res, next) => {
+    try {
+        const allRecords = await Record.find()
+        res.status(200).json(allRecords)
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.post("/records/:id", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        await Record.findByIdAndDelete(id)
+        res.status(200).json({ message: "Record deleted" })
+    } catch (error) {
+        next(error)
+    }
+})
+
 // POST route to create a record
 
 router.post("/records", async (req, res, next) => {
