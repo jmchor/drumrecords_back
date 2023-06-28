@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const Record = require("../models/Record.model");
 
 // Connection URL for MongoDB
-const mongoURL = "mongodb://localhost:27017/drumrecords_back";
+const mongoURL = 'mongodb+srv://jchorzempa:dfOJiF2bxPA7Ba7c@drumrecordscluster.4praam0.mongodb.net/?retryWrites=true&w=majority' || 'mongodb://127.0.0.1:27017/drumrecords_back';
+
 
 // Connect to MongoDB
 mongoose.connect(mongoURL, {
+
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -127,6 +129,8 @@ const records = [
 
   const seedRecords = async () => {
     try {
+      console.log('Connected to database')
+
       // Clear existing records
       await Record.deleteMany();
 
