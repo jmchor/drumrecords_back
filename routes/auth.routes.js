@@ -60,9 +60,17 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/verify", isAuthenticated, (req, res, next) => {
-  console.log(`req.payload`, req.payload);
+  try {
 
-  res.status(200).json(req.payload);
+    res.status(200).json({ message: "User is logged in" });
+  }
+  catch (error) {
+    console.log("WHAT");
+    next(error);
+    res.json({ message: "No Admin present" });
+  }
+
+
 });
 
 module.exports = router;
