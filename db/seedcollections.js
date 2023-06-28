@@ -3,7 +3,7 @@ const Collection = require("../models/Collection.model");
 const Record = require("../models/Record.model");
 
 // Connect to MongoDB database
-const mongoURL = 'mongodb+srv://jchorzempa:dfOJiF2bxPA7Ba7c@drumrecordscluster.4praam0.mongodb.net/?retryWrites=true&w=majority' || 'mongodb://127.0.0.1:27017/drumrecords_back';
+const mongoURL = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/drumrecords_back';
 
 // Connect to MongoDB
 mongoose.connect(mongoURL, {
