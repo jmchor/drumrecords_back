@@ -21,3 +21,8 @@ ehthumbs.db
 
 # VS Code
 .vscode/*
+
+#files
+db/seedAdmin.js
+db/seedfile.js
+db/seedcollections.js
